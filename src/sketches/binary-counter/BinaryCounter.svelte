@@ -37,5 +37,7 @@
 
   .counter:hover {
     color: burlywood;
+    transform: rotate3d(1, 0, 0, -165deg);
+    transition: transform cubic-bezier(0.19, 1, 0.22, 1) 1s;
   }
 </style>
