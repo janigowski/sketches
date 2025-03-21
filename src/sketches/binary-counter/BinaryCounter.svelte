@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onDestroy, onMount } from "svelte";
 
-  export let intervalMs = 50;
+  let intervalMs = 1000;
   export let delayMs = 0;
   export let length = 10;
 
@@ -31,7 +31,11 @@
 
 <style>
   .counter {
-    font-size: 60px;
+    font-size: 24px;
     font-family: monospace;
+  }
+
+  .counter:hover {
+    color: burlywood;
   }
 </style>

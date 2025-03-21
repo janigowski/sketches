@@ -1,57 +1,51 @@
 <script lang="ts">
   import BinaryCounter from "./BinaryCounter.svelte";
+  import { range } from "canvas-sketch-util/random";
+
+  const binaryCounters = Array(200).fill(0);
 </script>
 
 <main>
-  <div class="binary-counters">
-    <BinaryCounter intervalMs={100} delayMs={0} length={8} />
-    <BinaryCounter intervalMs={100} delayMs={0} length={6} />
-    <BinaryCounter intervalMs={100} delayMs={0} length={4} />
-    <BinaryCounter intervalMs={100} delayMs={0} length={8} />
-    <BinaryCounter intervalMs={80} delayMs={0} length={5} />
-    <BinaryCounter intervalMs={2000} delayMs={0} length={4} />
-    <BinaryCounter intervalMs={150} delayMs={0} length={8} />
-    <BinaryCounter intervalMs={150} delayMs={0} length={8} />
-    <BinaryCounter intervalMs={150} delayMs={0} length={8} />
-    <BinaryCounter intervalMs={150} delayMs={0} length={8} />
-    <BinaryCounter intervalMs={150} delayMs={150} length={8} />
-    <BinaryCounter intervalMs={50} delayMs={0} length={8} />
-    <BinaryCounter intervalMs={150} delayMs={0} length={8} />
-    <BinaryCounter intervalMs={150} delayMs={0} length={8} />
-    <BinaryCounter intervalMs={150} delayMs={0} length={8} />
-    <BinaryCounter intervalMs={500} delayMs={0} length={8} />
-    <BinaryCounter intervalMs={150} delayMs={0} length={10} />
-    <BinaryCounter intervalMs={150} delayMs={0} length={3} />
-    <BinaryCounter intervalMs={150} delayMs={0} length={8} />
-    <BinaryCounter intervalMs={150} delayMs={0} length={8} />
-    <BinaryCounter intervalMs={150} delayMs={0} length={8} />
-    <BinaryCounter intervalMs={150} delayMs={0} length={8} />
-    <BinaryCounter intervalMs={150} delayMs={0} length={8} />
-    <BinaryCounter intervalMs={150} delayMs={180} length={4} />
-    <BinaryCounter intervalMs={150} delayMs={0} length={8} />
-    <BinaryCounter intervalMs={150} delayMs={0} length={8} />
-    <BinaryCounter intervalMs={10} delayMs={0} length={8} />
-    <BinaryCounter intervalMs={150} delayMs={0} length={8} />
-    <BinaryCounter intervalMs={150} delayMs={0} length={8} />
-    <BinaryCounter intervalMs={150} delayMs={0} length={8} />
-    <BinaryCounter intervalMs={100} delayMs={0} length={8} />
-    <BinaryCounter intervalMs={150} delayMs={0} length={8} />
-    <BinaryCounter intervalMs={150} delayMs={0} length={8} />
-    <BinaryCounter intervalMs={150} delayMs={0} length={8} />
-    <BinaryCounter intervalMs={80} delayMs={240} length={8} />
-    <BinaryCounter intervalMs={80} delayMs={0} length={8} />
-    <BinaryCounter intervalMs={80} delayMs={0} length={8} />
-    <BinaryCounter intervalMs={80} delayMs={0} length={8} />
-    <BinaryCounter intervalMs={80} delayMs={0} length={8} />
-    <BinaryCounter intervalMs={100} delayMs={2000} length={2} />
+  <div class="inner">
+    <div class="grid">
+      {#each binaryCounters as delayMs}
+        <div class="item">
+          <BinaryCounter delayMs={range(1, 4000)} length={8} />
+        </div>
+      {/each}
+    </div>
   </div>
 </main>
 
 <style>
-  .binary-counters {
+  main {
     display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: center;
+    background-image: url("/src/assets/andre-benz-JnB8Gio4GZo-unsplash.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100vh;
+    cursor: none;
+  }
+
+  .inner {
+    background-color: #0e0e0e;
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    mix-blend-mode: multiply;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 10px;
+    border: 1px dashed #130f0f;
+    padding: 20px;
+    color: #363636;
+  }
+
+  .item {
   }
 </style>
